@@ -10,32 +10,31 @@ emotions <- c("joy", "sad", "anger")
 # Iterate over each target id and emotion
 for (idt in id_t) {
   for (emo in emotions) {
-    
     # Skip specific combinations of target and emotion not used in experiments
-    if ((idt == "eat01" & emo == "sad") | 
-        (idt == "eat14" & emo == "joy") | 
-        (idt == "eat06" & emo == "anger")) {
+    if ((idt == "eat01" & emo == "sad") |
+      (idt == "eat14" & emo == "joy") |
+      (idt == "eat06" & emo == "anger")) {
       next
     }
-    
+
     # Prepare target's ratings
     target_scores <- gsub("\\[|\\]", "", df_t[df_t$id == idt & df_t$emotion == emo, "score_2Hz"])
     target <- as.numeric(strsplit(target_scores, ", ")[[1]])
-    
+
     # Create variable name for the target's id and emotion
     var_name <- paste(idt, emo, sep = "_")
     assign(var_name, data.frame(target = target))
-    
+
     # Get all observer responses for the target and emotion
     df_observers <- df_o[df_o$target == idt & df_o$emotion == emo, ]
-    
+
     # Add observer ratings to the target data
     for (i in 1:nrow(df_observers)) {
       observer_id <- df_observers[i, "id"]
       observer_scores <- as.numeric(strsplit(gsub("\\[|\\]", "", df_observers[i, "score_2Hz"]), ", ")[[1]])
       observer_df <- data.frame(observer_scores)
       colnames(observer_df) <- as.character(observer_id)
-      
+
       assign(var_name, cbind(get(var_name), observer_df))
     }
   }
@@ -44,14 +43,13 @@ for (idt in id_t) {
 # Calculate the median of 12 listener ratings per time point
 for (idt in id_t) {
   for (emo in emotions) {
-    
     # Skip specific combinations of target and emotion
-    if ((idt == "eat01" & emo == "sad") | 
-        (idt == "eat14" & emo == "joy") | 
-        (idt == "eat06" & emo == "anger")) {
+    if ((idt == "eat01" & emo == "sad") |
+      (idt == "eat14" & emo == "joy") |
+      (idt == "eat06" & emo == "anger")) {
       next
     }
-    
+
     # Calculate median observer ratings and append to the data
     var_name <- paste(idt, emo, sep = "_")
     df_ratings <- get(var_name)
@@ -77,7 +75,7 @@ plot_emotion_ratings <- function(data, color_target, color_median, ylim_vals = c
 }
 
 # Create individual plots for each emotion
-plot_emotion_ratings(eat16_anger[4:(nrow(eat16_anger) - 14),], '#a41f13', '#000000')
-plot_emotion_ratings(eat01_joy[1:(nrow(eat01_joy) - 8),], '#ed553b', '#000000')
-plot_emotion_ratings(eat09_sad[3:(nrow(eat09_sad) - 4),], '#3caea3', '#000000')
-plot_emotion_ratings(eat17_joy, '#ed553b', '#000000', ylim_vals = c(1, 9), xlim_vals = c(0, 100))
+plot_emotion_ratings(eat16_anger[4:(nrow(eat16_anger) - 14), ], "#a41f13", "#000000")
+plot_emotion_ratings(eat01_joy[1:(nrow(eat01_joy) - 8), ], "#ed553b", "#000000")
+plot_emotion_ratings(eat09_sad[3:(nrow(eat09_sad) - 4), ], "#3caea3", "#000000")
+plot_emotion_ratings(eat17_joy, "#ed553b", "#000000", ylim_vals = c(1, 9), xlim_vals = c(0, 100))

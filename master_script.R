@@ -7,7 +7,7 @@ setwd("/Users/user/workspace/ismir2024-emotion-inference")
 source("setup.R")
 
 # Run all sections sequentially
-source("listeners_preparation.R")
+source("listeners_preparation.R", encoding = "UTF-8")
 # source("dynamic_LME_total.R")
 # source("dynamic_LME_joy_happiness.R")
 # source("dynamic_LME_sadness.R")
