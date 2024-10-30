@@ -118,7 +118,3 @@ The repository is structured to facilitate reproducible research. If you have ac
 ## License
 
 This repository is released under the MIT License.
-
----
-
-This README provides instructions for setting up the environment, generating missing data, and running the analysis pipeline. If additional clarifications are required, please refer to the comments within each script.
