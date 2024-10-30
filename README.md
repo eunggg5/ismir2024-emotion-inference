@@ -41,28 +41,6 @@ Due to data privacy, certain essential data files are not included in this repos
 
 To generate the MIR features, you can use an audio analysis toolkit, such as Python’s `librosa`, to compute features like RMS, zero-crossing rate, spectral centroid, etc., for each audio stimulus. Save the generated features as individual `.csv` files within a folder named `mir_features_240322/`.
 
-Example Python Code to Generate MIR Features:
-
-```python
-import librosa
-import pandas as pd
-import os
-
-def extract_mir_features(audio_path, output_folder):
-    y, sr = librosa.load(audio_path)
-    features = {
-        "rms": librosa.feature.rms(y=y).mean(),
-        "flatness": librosa.feature.spectral_flatness(y=y).mean(),
-        "zerocross": librosa.feature.zero_crossing_rate(y=y).mean(),
-        "centroid": librosa.feature.spectral_centroid(y=y, sr=sr).mean(),
-        "rolloff": librosa.feature.spectral_rolloff(y=y, sr=sr).mean(),
-    }
-    file_name = os.path.splitext(os.path.basename(audio_path))[0]
-    pd.DataFrame([features]).to_csv(f"{output_folder}/{file_name}.csv", index=False)
-
-# Run this function for each audio file and save results in mir_features_240322/
-```
-
 ### Directory Structure
 
 Once you have obtained or generated these files, ensure they are placed in the following structure:
@@ -100,22 +78,6 @@ Each script in the repository serves a specific purpose in the analysis pipeline
 ## Additional Information
 
 The repository is structured to facilitate reproducible research. If you have access to the necessary data files, simply place them in the appropriate directories as outlined above, and run `master_script.R` to execute the full analysis.
-
-## Sample Usage
-
-1. Set up your working directory by running:
-
-    ```r
-    setwd("/path/to/your/directory")
-    ```
-
-2. Source the `master_script.R` to execute the entire analysis:
-
-    ```r
-    source("master_script.R")
-    ```
-
-3. View results in the console or generated output files.
 
 ## ratings_interpolation.py
 The `ratings_interpolation.py` script processes and interpolates time-series emotion rating data for *target* (composers' ratings) and *observer* (listeners' ratings). The data is upsampled to 2Hz (0.5-second intervals) for consistent temporal alignment.
