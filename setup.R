@@ -15,8 +15,11 @@
 # caret version: 6.0.94
 # sjPlot version: 2.8.15
 # effects version: 4.2.2
+# dplyr version: 1.1.2
+# Metrics version: 0.1.4
 
 ################################################################################################################
+
 # Load necessary libraries
 library(ggplot2)
 library(scico)
@@ -27,13 +30,12 @@ library(car)
 library(caret)
 library(sjPlot)
 library(effects)
-
-################################################################################################################
-# Set working directory
-setwd("~/Library/CloudStorage/GoogleDrive-oheunji97@gmail.com/내 드라이브/Document/2KAIST/2024/conference/ISMIR")
+library(dplyr)
+library(Metrics)
 
 ################################################################################################################
 # Import composers' (targets) and listeners' (observers) data
+################################################################################################################
 
 # Targets (composers) dataframe
 df_t <- read.csv("target_rate_2Hz.csv")
@@ -42,23 +44,24 @@ df_t <- read.csv("target_rate_2Hz.csv")
 df_o <- read.csv("observer_rate_2Hz.csv")
 
 # Remove unnecessary data points from df_t
-df_t2 <- df_t[-which(df_t$id == "eat01" & df_t$emotion == "sad"),]
-df_t2 <- df_t2[-which(df_t$id == "eat14" & df_t$emotion == "joy"),]
-df_t2 <- df_t2[-which(df_t$id == "eat06" & df_t$emotion == "anger"),]
-df_t2 <- df_t2[-which(df_t$id == "eat05"),]
+df_t2 <- df_t[-which(df_t$id == "eat01" & df_t$emotion == "sad"), ]
+df_t2 <- df_t2[-which(df_t2$id == "eat14" & df_t2$emotion == "joy"), ]
+df_t2 <- df_t2[-which(df_t2$id == "eat06" & df_t2$emotion == "anger"), ]
+df_t2 <- df_t2[-which(df_t2$id == "eat05"), ]
 
 # Summary statistics for df_t2
 summary(df_t2)
 
 # Remove an observer's data due to technical issues
 df_o$id <- as.factor(df_o$id)
-df_o <- df_o[-which(df_o$id == "eao28"),]
+df_o <- df_o[-which(df_o$id == "eao28"), ]
 
 # Summary statistics for df_o
 summary(df_o)
 
 ################################################################################################################
 # Prepare participant ID lists
+################################################################################################################
 
 # Target (composer) IDs
 id_t <- c("eat01", "eat16", "eat17", "eat06", "eat02", "eat14", "eat09")
@@ -68,6 +71,7 @@ id_o <- unique(as.character(df_o$id))
 
 ################################################################################################################
 # Import MIR (Music Information Retrieval) features
+################################################################################################################
 
 # Load 2D time-series MIR features
 rms <- read.csv("mir_features_240322/mir_rms.csv")
@@ -91,6 +95,7 @@ mir <- c("rms", "flatness", "zerocross", "centroid", "rolloff")
 # dynamic_tempo <- read.csv("mir_features_240322/mir_dynamic_tempo.csv")
 
 ################################################################################################################
+
 # Version information for reproducibility
 print("R and package version information:")
 
@@ -110,7 +115,12 @@ print(paste("car version:", packageVersion("car")))
 print(paste("caret version:", packageVersion("caret")))
 print(paste("sjPlot version:", packageVersion("sjPlot")))
 print(paste("effects version:", packageVersion("effects")))
+print(paste("dplyr version:", packageVersion("dplyr")))
+print(paste("Metrics version:", packageVersion("Metrics")))
 
 ################################################################################################################
+
 # Confirmation message
 print("Setup complete.")
+
+################################################################################################################
