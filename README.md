@@ -82,36 +82,6 @@ The repository is structured to facilitate reproducible research. If you have ac
 ## ratings_interpolation.py
 The `ratings_interpolation.py` script processes and interpolates time-series emotion rating data for *target* (composers' ratings) and *observer* (listeners' ratings). The data is upsampled to 2Hz (0.5-second intervals) for consistent temporal alignment.
 
-### Script Details
-#### Functions
-
-- `interpolate_values(time, value, length, interval=0.5)`:
-    - Takes in lists of time points and corresponding rating values, creating a uniformly spaced time array using linear interpolation.
-    - **Parameters**:
-        - `time`: Time points (in seconds) where ratings were recorded.
-        - `value`: Corresponding rating values.
-        - `length`: Total length of the observation period.
-        - `interval`: Interval at which to interpolate values (default is 0.5 seconds for 2Hz).
-    - **Returns**: Interpolated time points and values.
-
-- `process_data(file_path, output_file, columns)`:
-    - Reads an input CSV file, applies interpolation to each row, and saves results to a new CSV.
-    - **Parameters**:
-        - `file_path`: Path to the input CSV.
-        - `output_file`: Path for saving the output CSV with interpolated data.
-        - `columns`: Columns to include in the output.
-    - **Process**:
-        - Converts `time` and `score` columns from strings to lists, `interpolates values`, and stores results.
-        - Saves processed data to a new CSV file.
-
-#### Usage
-The script processes two datasets:
-
-- **Target Dataset (Composers' Ratings)**: `target_rate.csv` → `target_rate_2Hz.csv`
-- **Observer Dataset (Listeners' Ratings)**: `observer_videorate.csv` → `observer_rate_2Hz.csv`
-
-To run this script, ensure the input files are in the main directory. The script generates `target_rate_2Hz.csv` and `observer_rate_2Hz.csv` as outputs for further analysis.
-
 ## License
 
 This repository is released under the MIT License.
