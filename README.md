@@ -4,12 +4,29 @@
 
 This repository contains scripts for analyzing emotion inference using Linear Mixed Effects (LME) models. The analysis focuses on dynamic and discrete emotional responses in music perception, aiming to identify predictors of listeners’ emotional ratings based on audio features and composers' intentions.
 
+In this project:
+
+Observer refers to the listener who perceives and rates the emotional valence of the music.
+Target refers to the composer who intended the emotional expression during the music performance.
+
+## Related Publication
+This study and analysis are based on our recent publication:
+
+E.J. Oh, H. Kim, and K.M. Lee, “Which audio features can predict the dynamic musical emotions of both composers and listeners?” in Proceedings of the 25th International Society for Music Information Retrieval Conference, San Francisco, United States, 2024.
+
+### Abstract
+Are composers’ emotional intentions conveyed to listeners through audio features? In the field of Music Emotion Recognition (MER), recent efforts have been made to predict listeners’ (observers') time-varying perceived emotions using machine-learning models. However, interpreting these models has been challenging due to their black-box nature. To increase the explainability of models for subjective emotional experiences, we focus on composers’ (targets') emotional intentions.
+
+Our study aims to determine which audio features effectively predict both composers’ time-varying emotions and listeners’ perceived emotions. Seven composers performed 18 piano improvisations expressing three types of emotions (joy/happiness, sadness, and anger), which were then listened to by 36 participants in a laboratory setting. Both composers and listeners continuously assessed the emotional valence of the music clips on a 9-point scale (1: ‘very negative’ to 9: ‘very positive’).
+
+Linear mixed-effect models analysis revealed that listeners significantly perceived the composers’ intended emotions. Regarding audio features, the RMS was found to modulate the degree to which the listener’s perceived emotion resembled the composer’s emotion across all emotions. Moreover, the significant audio features that influenced this relationship varied depending on the emotion type. We propose that audio features related to the emotional responses of composers and listeners can be considered key factors in predicting listeners’ emotional responses.
+
 ## Missing Data Files
 
 Due to data privacy or size constraints, certain essential data files are not included in this repository and need to be obtained or generated separately:
 
-- **`observer_rate_2Hz.csv`**: Contains observer emotional ratings sampled at 2Hz.
-- **`target_rate_2Hz.csv`**: Contains target emotional ratings sampled at 2Hz.
+- **`observer_rate_2Hz.csv`**: Contains observer (listener) emotional ratings sampled at 2Hz.
+- **`target_rate_2Hz.csv`**: Contains target (composer) emotional ratings sampled at 2Hz.
 - **`mir_features_240322/`**: Folder containing pre-calculated Music Information Retrieval (MIR) features, including files such as `rms.csv`, `flatness.csv`, `zerocross.csv`, etc.
 
 ### How to Obtain or Generate the Missing Data
