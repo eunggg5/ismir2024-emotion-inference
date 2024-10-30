@@ -6,13 +6,13 @@ This repository contains scripts for analyzing emotion inference using Linear Mi
 
 In this project:
 
-Observer refers to the listener who perceives and rates the emotional valence of the music.
-Target refers to the composer who intended the emotional expression during the music performance.
+- *Observer* refers to the listener who perceives and rates the emotional valence of the music.
+- *Target* refers to the composer who intended the emotional expression during the music performance.
 
 ## Related Publication
 This study and analysis are based on our recent publication:
 
-E.J. Oh, H. Kim, and K.M. Lee, “Which audio features can predict the dynamic musical emotions of both composers and listeners?” in Proceedings of the 25th International Society for Music Information Retrieval Conference, San Francisco, United States, 2024.
+E.J. Oh, H. Kim, and K.M. Lee, “Which audio features can predict the dynamic musical emotions of both composers and listeners?” in *Proceedings of the 25th International Society for Music Information Retrieval Conference*, San Francisco, United States, 2024.
 
 ### Abstract
 Are composers’ emotional intentions conveyed to listeners through audio features? In the field of Music Emotion Recognition (MER), recent efforts have been made to predict listeners’ (observers') time-varying perceived emotions using machine-learning models. However, interpreting these models has been challenging due to their black-box nature. To increase the explainability of models for subjective emotional experiences, we focus on composers’ (targets') emotional intentions.
