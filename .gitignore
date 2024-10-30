@@ -48,9 +48,6 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 
-# Supplementary materials
-eat_video_info.R
-
 # Experimental data
 target_rate.csv
 target_rate_2Hz.csv
@@ -59,3 +56,6 @@ observer_rate_2Hz.csv
 
 # MIR data
 mir_features_240322/
+
+# Supplementary materials
+eat_video_info.R
