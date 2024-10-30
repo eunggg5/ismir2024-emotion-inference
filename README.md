@@ -67,7 +67,7 @@ Each script in the repository serves a specific purpose in the analysis pipeline
 
 3. **`discrete_LME.R`**: Conducts Linear Mixed Effects modeling on discrete ratings (single-time emotional judgments) to identify predictors.
 
-4. **`discrete_cross_validation.R`**: Implements cross-validation on discrete LME models to validate the performance and generalizability of the model across different subsets of data.
+4. **`discrete_cross_validation.R`**: Implements cross-validation on discrete LME models to validate the performance and generalizability of the model across different subsets of data. **Contributor:** Hyunjae Kim
 
 5. **`dynamic_LME_total.R`**: Compares LME models on dynamic ratings (continuous-time emotional judgments) to examine predictors of emotional changes.
 
