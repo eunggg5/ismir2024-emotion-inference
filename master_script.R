@@ -4,7 +4,7 @@
 rm(list = ls())
 
 # Set working directory
-setwd("/Users/user/workspace/ismir2024-emotion-inference")
+setwd("/Users/user/workspace/ismir2024-emotion-inference") # change the path
 
 # Run the setup first
 source("setup.R")
