@@ -48,7 +48,10 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 
-# Experimental Data
+# Supplementary materials
+eat_video_info.R
+
+# Experimental data
 target_rate.csv
 target_rate_2Hz.csv
 observer_videorate.csv
